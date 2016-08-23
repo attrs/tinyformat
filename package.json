@@ -1,0 +1,19 @@
+{
+  "name": "x-format",
+  "version": "0.0.0",
+  "description": "x-format",
+  "main": "format.js",
+  "repository": "attrs/x-format",
+  "author": "joje <joje.attrs@gmail.com>",
+  "homepage": "https://github.com/attrs/x-format",
+  "license": "MIT",
+  "keywords": [],
+  "files": [
+    "format.js",
+    "LICENSE",
+    "README.md"
+  ],
+  "dependencies": {
+    "moment": "^2.14.1"
+  }
+}
