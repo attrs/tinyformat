@@ -1,11 +1,11 @@
 {
-  "name": "x-format",
+  "name": "tinyformat",
   "version": "0.0.0",
-  "description": "x-format",
+  "description": "tinyformat",
   "main": "format.js",
-  "repository": "attrs/x-format",
+  "repository": "attrs/tinyformat",
   "author": "joje <joje.attrs@gmail.com>",
-  "homepage": "https://github.com/attrs/x-format",
+  "homepage": "https://github.com/attrs/tinyformat",
   "license": "MIT",
   "keywords": [],
   "files": [

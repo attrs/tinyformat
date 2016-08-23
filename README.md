@@ -1,8 +1,8 @@
-# x-format
+# tinyformat
 
 ## Installation
 ```sh
-$ npm install x-format --save
+$ npm install tinyformat --save
 ```
 
 ## Usage
