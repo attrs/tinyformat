@@ -1,8 +1,8 @@
-# tinyformat
+# tinyformatter
 
 ## Installation
 ```sh
-$ npm install tinyformat --save
+$ npm install tinyformatter --save
 ```
 
 ## Usage

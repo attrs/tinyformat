@@ -1,11 +1,11 @@
 {
-  "name": "tinyformat",
+  "name": "tinyformatter",
   "version": "0.0.0",
-  "description": "tinyformat",
+  "description": "tinyformatter",
   "main": "format.js",
-  "repository": "attrs/tinyformat",
+  "repository": "attrs/tinyformatter",
   "author": "joje <joje.attrs@gmail.com>",
-  "homepage": "https://github.com/attrs/tinyformat",
+  "homepage": "https://github.com/attrs/tinyformatter",
   "license": "MIT",
   "keywords": [],
   "files": [
