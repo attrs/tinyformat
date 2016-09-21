@@ -1,10 +1,16 @@
 var moment = require('moment');
+var currencyFormatter = require('currency-formatter');
 var today = moment(moment(new Date()).format('YYYYMMDD'), 'YYYYMMDD');
 
 module.exports = {
-  currency: function(number) {
-    if( !(0).toLocaleString ) return number;
-    return typeof number === 'number' ? number.toLocaleString() + '원' : (number || '') + '원';
+  currency: function(value, currency, def) {
+    if( typeof value !== 'number' || isNaN(value) ) return def || '';
+    var opt;
+    if( typeof currency === 'string' ) opt = { code: currency };
+    else if( typeof currency === 'number' ) opt = { precision: currency, format: '%v' };
+    else if( currency && typeof currency === 'object' ) opt = currency;
+    else opt = { precision: 0, format: '%v' };
+    return currencyFormatter.format(value, opt); 
   },
   number: function(number) {
     if( !(0).toLocaleString ) return number;
@@ -27,9 +33,9 @@ module.exports = {
     } else if( input instanceof Date ) {
       date = moment(input);
     }
-  
+    
     if( !date || !date.isValid() ) return console.error('Unparseable Date:' + input) && defaultValue;
-  
+    
     return date.format(format);
   }
 };

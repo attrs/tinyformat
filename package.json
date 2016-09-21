@@ -14,6 +14,7 @@
     "README.md"
   ],
   "dependencies": {
+    "currency-formatter": "^1.0.4",
     "moment": "^2.14.1"
   }
 }
