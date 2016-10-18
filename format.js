@@ -1,8 +1,11 @@
 var moment = require('moment');
 var currencyFormatter = require('currency-formatter');
-var today = moment(moment(new Date()).format('YYYYMMDD'), 'YYYYMMDD');
 
 module.exports = {
+  locale: function(locale) {
+    moment.locale(locale);
+    return this;
+  },
   currency: function(value, currency, def) {
     if( typeof value !== 'number' || isNaN(value) ) return def || '';
     var opt;
