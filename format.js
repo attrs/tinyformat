@@ -3,7 +3,8 @@ var currencyFormatter = require('currency-formatter');
 
 module.exports = {
   locale: function(locale) {
-    moment.locale(locale);
+    if( !locale || typeof locale != 'string' ) return this;
+    moment.locale(locale.split('-')[0] || locale);
     return this;
   },
   currency: function(value, currency, def) {
