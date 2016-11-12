@@ -1,11 +1,11 @@
 var moment = require('moment');
 var currencyFormatter = require('currency-formatter');
 
-module.exports = {
+var formatter = module.exports = {
   locale: function(locale) {
-    if( !locale || typeof locale != 'string' ) return this;
+    if( !locale || typeof locale != 'string' ) return formatter;
     moment.locale(locale.split('-')[0] || locale);
-    return this;
+    return formatter;
   },
   currency: function(value, currency, def) {
     if( typeof value !== 'number' || isNaN(value) ) return def || '';
@@ -16,7 +16,13 @@ module.exports = {
     else opt = { precision: 0, format: '%v' };
     return currencyFormatter.format(value, opt); 
   },
+  symbol: function(currency) {
+    if( !currency ) return '';
+    var currency = currencyFormatter.findCurrency(currency.toUpperCase());
+    return currency && currency.symbol;
+  },
   number: function(number) {
+    console.info('tinyformatter.number is deprecated, use tinyformatter.currency(number) instead');
     if( !(0).toLocaleString ) return number;
     return typeof number === 'number' ? number.toLocaleString() : (number || '');
   },
