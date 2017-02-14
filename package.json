@@ -1,6 +1,6 @@
 {
   "name": "tinyformatter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "tinyformatter",
   "main": "format.js",
   "repository": "attrs/tinyformatter",
