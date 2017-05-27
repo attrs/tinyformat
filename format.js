@@ -7,8 +7,9 @@ moment.locale(locale);
 
 module.exports = {
   locale: function(locale) {
-    if( !locale || typeof locale != 'string' ) return;
+    if( !locale || typeof locale != 'string' ) return this;
     moment.locale(locale);
+    return this;
   },
   currency: function(value, currency, def) {
     if( typeof value !== 'number' || isNaN(value) ) return def || '';
