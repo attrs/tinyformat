@@ -1,11 +1,14 @@
 var moment = require('moment');
 var currencyFormatter = require('currency-formatter');
+var locale = require('browser-locale')();
+locale = (locale && locale.split('-')[0]) || locale;
 
-var formatter = module.exports = {
+moment.locale(locale);
+
+module.exports = {
   locale: function(locale) {
-    if( !locale || typeof locale != 'string' ) return formatter;
-    moment.locale(locale.split('-')[0] || locale);
-    return formatter;
+    if( !locale || typeof locale != 'string' ) return;
+    moment.locale(locale);
   },
   currency: function(value, currency, def) {
     if( typeof value !== 'number' || isNaN(value) ) return def || '';
@@ -21,31 +24,14 @@ var formatter = module.exports = {
     var currency = currencyFormatter.findCurrency(currency.toUpperCase());
     return currency && currency.symbol;
   },
-  number: function(number) {
-    console.info('tinyformatter.number is deprecated, use tinyformatter.currency(number) instead');
-    if( !(0).toLocaleString ) return number;
-    return typeof number === 'number' ? number.toLocaleString() : (number || '');
-  },
   abs: function(number) {
-    if( typeof number !== 'number' ) return number;
-    return Math.abs(number);
+    return (+number && Math.abs(number)) || number;
   },
   date: function(input, format, defaultValue) {
     if( !input ) return defaultValue;
-    var date;
-    if( typeof input === 'number' ) {
-      date = moment(new Date(input));
-    } else if( typeof input === 'string' ) {
-      if( input.length === 16 && moment(input, 'YYYYMMDDHHmmssSS').isValid() ) date = moment(input, 'YYYYMMDDHHmmssSS');
-      else if( input.length === 14 && moment(input, 'YYYYMMDDHHmmss').isValid() ) date = moment(input, 'YYYYMMDDHHmmss');
-      else if( input.length === 8 && moment(input, 'YYYYMMDD').isValid() ) date = moment(input, 'YYYYMMDD');
-      else date = moment(input);
-    } else if( input instanceof Date ) {
-      date = moment(input);
-    }
     
+    var date = (+input && moment(new Date(input))) || moment(input);
     if( !date || !date.isValid() ) return console.error('Unparseable Date:' + input) && defaultValue;
-    
     return date.format(format);
   }
 };
